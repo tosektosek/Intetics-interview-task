@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Intetics .iml" filepath="$PROJECT_DIR$/.idea/modules/Intetics .iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Intetics_.iml" filepath="$PROJECT_DIR$/.idea/modules/Intetics_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Intetics__main.iml" filepath="$PROJECT_DIR$/.idea/modules/Intetics__main.iml" group="Intetics_" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Intetics__test.iml" filepath="$PROJECT_DIR$/.idea/modules/Intetics__test.iml" group="Intetics_" />
+    </modules>
+  </component>
+</project>
