@@ -1,5 +1,8 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -8,41 +11,44 @@ public class Main {
         System.out.println(doSomeWork());
     }
 
-    public static Integer doSomeWork() {
+    public static BigInteger doSomeWork() {
         int a = 10000;
         int b = 99999;
 
-        List<Integer> list = new ArrayList<>();
+        List<BigInteger> list = new ArrayList<>();
 
         for (int i = a; i < b; i++)
-            list.add(i);
+            list.add(BigInteger.valueOf(i));
 
-        List<Integer> primeNumbers = new ArrayList<>();
+        List<BigInteger> primeNumbers = new ArrayList<>();
         list.stream().filter(Main::isPrime).forEach(primeNumbers::add);
-
         return findBiggestPalindrome(primeNumbers);
     }
 
-    private static Integer findBiggestPalindrome(List<Integer> primeNumbers) {
-        Integer result;
+    private static BigInteger findBiggestPalindrome(List<BigInteger> primeNumbers) {
+        List<BigInteger> list = new ArrayList<>();
         for (int i = primeNumbers.size()-1; i > 0; i--) {
             for (int j = i; j > 0; j--) {
-                 result = primeNumbers.get(i)*primeNumbers.get(j);
-                if (isPalindrome(primeNumbers.get(i)*primeNumbers.get(j))) return result;
+                BigInteger result = primeNumbers.get(i).multiply(primeNumbers.get(j));
+                if (isPalindrome(result)) {
+                    list.add(result);
+                }
             }
         }
-        return 0;
+
+        Collections.sort(list);
+        return list.get(list.size()-1);
     }
 
-    private static boolean isPalindrome(Integer i) {
+    private static boolean isPalindrome(BigInteger i) {
         return new StringBuilder(""+i).reverse().toString().equals(""+i);
     }
 
-    private static boolean isPrime(Integer number) {
-        int temp;
-        for (int i = 2; i < number/2; i++) {
-            temp = number%i;
-            if (temp == 0)
+    private static boolean isPrime(BigInteger number) {
+        BigInteger temp;
+        for (int i = 2;number.divide(BigInteger.valueOf(2)).compareTo(BigInteger.valueOf(i)) > 0; i++) {
+            temp = number.mod(BigInteger.valueOf(i));
+            if (temp.equals(BigInteger.ZERO))
                 return false;
         }
         return true;
